@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>じゃんけんプログラム</title>
+</head>
+<body style="background-color: red;
+             color: white;
+             font-size: large;
+             font-weight: bold;">
+<div style="text-align: center;">じゃんけんプログラム</div>
+<div style="margin: 10px auto;
+      padding:10px;
+      width: 70%;
+      height: 500px;
+      background-color: black;">
+<form style="position: absolute;">
+あなたの選択は　
+<select id="myselect">
+<option>グー</option>
+<option>チョキ</option>
+<option>パー</option>
+</select>
+<input type="button" value="決定" onclick="mygame()">
+</form>
+<div id="AIselect" style="position: absolute;
+                          left: 700px;">
+相手の選択は ？
+</div>
+<img id="myimage" src="guu.png" style="position: absolute; top: 100px; left: 300px;">
+<img src="VS.png" style="position: absolute; top: 250px; left: 573px;">
+<img id="AIimage" src="guu.png" style="position: absolute; top: 100px; left: 700px;">
+<div id="result" style="font-size: x-large ;
+                        position: absolute;
+                        bottom: 50px;
+                        left: 780px;">
+
+勝敗の結果は ？
+</div>
+
+</div>
+
+<script>
+function mygame(){
+mynumber = document.getElementById("myselect").selectedIndex;
+if( mynumber == 0 ){
+document.getElementById("myimage").src="guu.png";
+}
+if( mynumber == 1 ){
+document.getElementById("myimage").src="choki.png";
+}
+if( mynumber == 2 ){
+document.getElementById("myimage").src="paa.png";
+}
+AInumber = Math.floor(Math.random()*3);
+if( AInumber == 0 ){
+AIhand = "グー";
+document.getElementById("AIimage").src="guu.png";
+}
+if( AInumber == 1 ){
+AIhand = "チョキ";
+document.getElementById("AIimage").src="choki.png";
+}
+if( AInumber == 2 ){
+AIhand = "パー";
+document.getElementById("AIimage").src="paa.png";
+}
+if( mynumber - AInumber == 2 ){
+judge = "あなたの 勝ち";
+}
+if( mynumber - AInumber == 1 ){
+judge = "あなたの 負け";
+}
+if( mynumber - AInumber == 0 ){
+judge = "引き分け";
+}
+if( mynumber - AInumber == -1 ){
+judge = "あなたの 勝ち";
+}
+if( mynumber - AInumber == -2 ){
+judge = "あなたの 負け";
+}
+document.getElementById("AIselect").innerHTML = "相手の選択は "+AIhand;
+document.getElementById("result").innerHTML = "勝敗の結果は "+judge;
+}
+</script>
+
+</body>
+</html>
